@@ -9,20 +9,25 @@ namespace Tetris
     internal class GameBoard
     {
         // ============================ VARIABLES =============================
-        private int[] boardStatus = new int[200];
+        private int[] boardStatus;
 
         // ============================ PROPERTIES ============================
         private Player? Player { get; set; }
 
-        internal void PlacePiece(int location)
-        {
-            boardStatus[location] = 1;
-        }
-
         // =========================== CONSTRUCTORS ===========================
         internal GameBoard(Player player)
         {
+            boardStatus = new int[200];
             Player = player;
+        }
+
+        internal int ValueAt(int x, int y)
+        {
+            return boardStatus[x + 10 * y];
+        }
+        internal void PlacePiece(int location)
+        {
+            boardStatus[location] = 1;
         }
 
         // ============================== METHOD ==============================

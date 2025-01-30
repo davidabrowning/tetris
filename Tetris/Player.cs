@@ -14,8 +14,8 @@ namespace Tetris
         private int y;
 
         // ============================ PROPERTIES ============================
-        public int X { get; set; }
-        public int Y { get; set; }
+        internal int X { get; set; }
+        internal int Y { get; set; }
         
         // =========================== CONSTRUCTORS ===========================
         internal Player()
