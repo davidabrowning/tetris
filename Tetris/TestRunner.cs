@@ -16,20 +16,20 @@ namespace Tetris
             string title = "";
 
             title = "True is true";
-            AssertTrue(true, title);
+            AssertTrue(title, true);
 
             title = "Two plus two equals four";
-            AssertEquals(4, 2 + 2, title);
+            AssertEquals(title, 4, 2 + 2);
 
             title = "GameBoard origin start with value 0";
             gameBoard = new GameBoard(player);
-            AssertEquals(0, gameBoard.ValueAt(0, 0), title);
+            AssertEquals(title, 0, gameBoard.ValueAt(0, 0));
 
             title = "Player cannot descend below 0";
-            AssertTrue(false, title);
+            AssertTrue(title, false);
 
             title = "Player cannot descend onto claimed gameboard space";
-            AssertTrue(false, title);
+            AssertTrue(title, false);
         }
         private static void PrintSuccess(string testTitle)
         {
@@ -39,7 +39,7 @@ namespace Tetris
         {
             Console.WriteLine($"FAILURE: {testTitle}. Expected: {expected}, actual: {actual}");
         }
-        private static void AssertTrue(bool condition, string testTitle)
+        private static void AssertTrue(string testTitle, bool condition)
         {
             if (condition)
             {
@@ -50,7 +50,7 @@ namespace Tetris
                 PrintFailure(testTitle, true.ToString(), condition.ToString());
             }
         }
-        private static void AssertFalse(bool condition, string testTitle)
+        private static void AssertFalse(string testTitle, bool condition)
         {
             if (condition == false)
             {
@@ -61,7 +61,7 @@ namespace Tetris
                 PrintFailure(testTitle, false.ToString(), condition.ToString());
             }
         }
-        private static void AssertEquals(int expected, int actual, string testTitle)
+        private static void AssertEquals(string testTitle, int expected, int actual)
         {
             if (expected == actual)
             {
