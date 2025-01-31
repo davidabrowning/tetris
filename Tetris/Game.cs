@@ -25,10 +25,13 @@ namespace Tetris
         {
             while (millisecondsElapsed < 300 && !playerWantsToQuit)
             {
-                DrawScene();
                 AdvanceTime();
                 CheckForKeyPress();
+                DrawScene();
+
+                AdvanceTime();
                 AdvancePositionData();
+                DrawScene();
             }
         }
         private void DrawScene()

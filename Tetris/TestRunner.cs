@@ -26,10 +26,16 @@ namespace Tetris
             AssertEquals(title, 0, gameBoard.ValueAt(0, 0));
 
             title = "Player cannot descend below 0";
-            AssertTrue(title, false);
+            player.Y = 0;
+            player.Descend();
+            AssertEquals(title, 0, player.Y);
 
             title = "Player cannot descend onto claimed gameboard space";
-            AssertTrue(title, false);
+            gameBoard.PlacePiece(0);
+            player.X = 0;
+            player.Y = 1;
+            player.Descend();
+            AssertEquals(title, 1, player.Y);
         }
         private static void PrintSuccess(string testTitle)
         {
