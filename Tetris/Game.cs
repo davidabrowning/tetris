@@ -51,7 +51,7 @@ namespace Tetris
                 switch (Console.ReadKey().Key.ToString().ToUpper())
                 {
                     case "LEFTARROW":
-                        player.X = Math.Max(0, player.X - 1);
+                        gameBoard.MovePlayerLeft();
                         break;
                     case "RIGHTARROW":
                         player.X = Math.Min(9, player.X + 1);
