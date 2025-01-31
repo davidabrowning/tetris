@@ -30,12 +30,16 @@ namespace Tetris
             player.Descend();
             AssertEquals(title, 0, player.Y);
 
-            title = "Player cannot descend onto claimed gameboard space";
+            title = "Player is not at rest if there is no piece below Player";
+            player.X = 0;
+            player.Y = 1;
+            AssertFalse(title, gameBoard.PlayerIsAtRest());
+
+            title = "Player is at rest if there is a piece below Player";
             gameBoard.PlacePiece(0);
             player.X = 0;
             player.Y = 1;
-            player.Descend();
-            AssertEquals(title, 1, player.Y);
+            AssertTrue(title, gameBoard.PlayerIsAtRest());
         }
         private static void PrintSuccess(string testTitle)
         {

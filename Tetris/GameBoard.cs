@@ -31,6 +31,20 @@ namespace Tetris
         }
 
         // ============================== METHOD ==============================
+        // PlayerIsAtRest. Returns a bool true if Player is at rest and piece
+        // should be placed.
+        //  - Check if Player is on bottom row
+        //  - Check if Player is above a placed piece
+        //  - Else return false
+        // ====================================================================
+        internal bool PlayerIsAtRest()
+        {
+            if (Player.Y == 0) { return true; }
+            if (ValueAt(Player.X, Player.Y - 1) == 1) { return true; }
+            return false;
+        }
+
+        // ============================== METHOD ==============================
         // ToString. Overrides default ToString and prints current GameBoard.
         // ====================================================================
         public override string ToString()
