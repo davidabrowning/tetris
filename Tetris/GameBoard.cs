@@ -20,7 +20,7 @@ namespace Tetris
         public int YMax { get { return numRows - 1; } }
         public int StartingX { get { return numCols / 2; } }
         public int StartingY { get { return numRows - 1;  } }
-
+        public bool IsGameOver {  get { return ValueAt(StartingX, StartingY) == 1; } }
 
         // =========================== CONSTRUCTORS ===========================
         internal GameBoard(Player player)

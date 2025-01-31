@@ -67,8 +67,13 @@ namespace Tetris
             gameBoard.PlacePiece(5, 7);
             AssertEquals(title, 1, gameBoard.ValueAt(5, 7));
 
-            // title "Game is lost if pieces is at starting location";
+            title = "Game is not lost if piece is not at starting location";
+            gameBoard.PlacePiece(1, 1);
+            AssertFalse(title, gameBoard.IsGameOver);
 
+            title = "Game is lost if piece is at starting location";
+            gameBoard.PlacePiece(gameBoard.StartingX, gameBoard.StartingY);
+            AssertTrue(title, gameBoard.IsGameOver);
         }
         private static void PrintSuccess(string testTitle)
         {
