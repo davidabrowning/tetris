@@ -56,6 +56,12 @@ namespace Tetris
             player.X = 1;
             player.Y = 1;
             AssertFalse(title, gameBoard.PlayerCanMoveLeft());
+
+            title = "Cannot move right if piece to right of Player";
+            gameBoard.PlacePiece(15);
+            player.X = 4;
+            player.Y = 1;
+            AssertFalse(title, gameBoard.PlayerCanMoveRight());
         }
         private static void PrintSuccess(string testTitle)
         {
