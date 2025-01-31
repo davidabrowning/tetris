@@ -62,6 +62,8 @@ namespace Tetris
             player.X = 4;
             player.Y = 1;
             AssertFalse(title, gameBoard.PlayerCanMoveRight());
+
+
         }
         private static void PrintSuccess(string testTitle)
         {

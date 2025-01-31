@@ -6,7 +6,7 @@
         {
             // Choose to run tests or launch game by commenting one out:
             RunTests();
-            LaunchGame();
+            // LaunchGame();
         }
         private static void RunTests()
         {

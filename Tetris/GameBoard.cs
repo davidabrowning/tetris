@@ -18,6 +18,8 @@ namespace Tetris
         private Player? Player { get; set; }
         public int XMax { get { return numCols - 1; } }
         public int YMax { get { return numRows - 1; } }
+        public int StartingX { get { return numCols / 2; } }
+        public int StartingY { get { return numRows - 1;  } }
 
 
         // =========================== CONSTRUCTORS ===========================
