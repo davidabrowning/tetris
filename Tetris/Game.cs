@@ -23,11 +23,13 @@ namespace Tetris
             gameBoard = new GameBoard(player);
             millisecondsElapsed = 0;
             playerWantsToQuit = false;
+
         }
 
         internal void Start()
         {
-            while (millisecondsElapsed < MillisecondsLimit && !playerWantsToQuit)
+            gameBoard.MovePlayerToInitialPosition();
+            while (!playerWantsToQuit && !gameBoard.IsGameOver)
             {
                 AdvanceTime();
                 CheckForKeyPress();
@@ -36,6 +38,14 @@ namespace Tetris
                 AdvanceTime();
                 AdvancePositionData();
                 DrawScene();
+            }
+            if (playerWantsToQuit)
+            {
+                Console.WriteLine("Quitting game. Thank you for playing!.");
+            }
+            if (gameBoard.IsGameOver)
+            {
+                Console.WriteLine("Game over. Thank you for playing!");
             }
         }
         private void DrawScene()
@@ -80,7 +90,7 @@ namespace Tetris
             if (gameBoard.PlayerIsAtRest())
             {
                 gameBoard.PlacePiece(player.X + player.Y * 10);
-                player.ResetPosition();
+                gameBoard.MovePlayerToInitialPosition();
             }
         }
         private void PauseGame()

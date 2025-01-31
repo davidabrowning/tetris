@@ -16,22 +16,10 @@ namespace Tetris
         // ============================ PROPERTIES ============================
         internal int X { get; set; }
         internal int Y { get; set; }
-        
-        // =========================== CONSTRUCTORS ===========================
-        internal Player()
-        {
-            X = 4;
-            Y = 19;
-        }
 
         internal void Descend()
         {
             Y = Math.Max(0, Y - 1);
-        }
-        internal void ResetPosition()
-        {
-            X = 4;
-            Y = 19;
         }
     }
 }

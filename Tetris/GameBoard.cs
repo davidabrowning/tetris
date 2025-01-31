@@ -26,7 +26,7 @@ namespace Tetris
         internal GameBoard(Player player)
         {
             numCols = 10;
-            numRows = 20;
+            numRows = 5;
             boardStatus = new int[numCols * numRows];
             Player = player;
         }
@@ -99,6 +99,11 @@ namespace Tetris
                 Player.X++;
             }
         }
+        internal void MovePlayerToInitialPosition()
+        {
+            Player.X = StartingX;
+            Player.Y = StartingY;
+        }
 
         // ============================== METHOD ==============================
         // ToString. Overrides default ToString and prints current GameBoard.
@@ -106,10 +111,10 @@ namespace Tetris
         public override string ToString()
 		{
             string boardAsString = "";
-            for (int y = 19; y >= 0; y--)
+            for (int y = YMax; y >= 0; y--)
             {
                 boardAsString += (" * ");
-                for (int x = 0; x <= 9; x++)
+                for (int x = 0; x <= XMax; x++)
                 {
                     if (boardStatus[x + numCols * y] == 1)
                     {
@@ -127,7 +132,7 @@ namespace Tetris
                 boardAsString += (" * ");
                 boardAsString += ("\n");
             }
-            for (int x = 0; x <= 9 + 2; x++)
+            for (int x = 0; x <= XMax + 2; x++)
             {
                 boardAsString += (" * ");
             }
