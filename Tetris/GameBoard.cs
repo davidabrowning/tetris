@@ -57,6 +57,10 @@ namespace Tetris
             {
                 return false;
             }
+            if (ValueAt(Player.X - 1, Player.Y) == 1)
+            {
+                return false;
+            }
             return true;
         }
 
