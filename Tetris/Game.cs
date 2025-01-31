@@ -8,10 +8,14 @@ namespace Tetris
 {
     internal class Game
     {
+        // Constants
+        private static readonly int millisecondsLimit = 300;
+
+        // Variables
         private GameBoard gameBoard;
         private Player player;
-        int millisecondsElapsed;
-        bool playerWantsToQuit;
+        private int millisecondsElapsed;
+        private bool playerWantsToQuit;
 
         internal void Setup()
         {
@@ -23,7 +27,7 @@ namespace Tetris
 
         internal void Start()
         {
-            while (millisecondsElapsed < 300 && !playerWantsToQuit)
+            while (millisecondsElapsed < millisecondsLimit && !playerWantsToQuit)
             {
                 AdvanceTime();
                 CheckForKeyPress();
