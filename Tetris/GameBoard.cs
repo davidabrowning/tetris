@@ -86,6 +86,14 @@ namespace Tetris
             }
         }
 
+        internal void MovePlayerRight()
+        {
+            if (PlayerCanMoveRight())
+            {
+                Player.X++;
+            }
+        }
+
         // ============================== METHOD ==============================
         // ToString. Overrides default ToString and prints current GameBoard.
         // ====================================================================

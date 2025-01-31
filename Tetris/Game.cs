@@ -54,12 +54,10 @@ namespace Tetris
                         gameBoard.MovePlayerLeft();
                         break;
                     case "RIGHTARROW":
-                        player.X = Math.Min(9, player.X + 1);
+                        gameBoard.MovePlayerRight();
                         break;
                     case "P":
-                        Console.Clear();
-                        Console.WriteLine("Paused. Press any key to continue.");
-                        Console.ReadKey();
+                        PauseGame();
                         break;
                     case "Q":
                         playerWantsToQuit = true;
@@ -80,6 +78,12 @@ namespace Tetris
                 gameBoard.PlacePiece(player.X + player.Y * 10);
                 player.ResetPosition();
             }
+        }
+        private void PauseGame()
+        {
+            Console.Clear();
+            Console.WriteLine("Paused. Press any key to continue.");
+            Console.ReadKey();
         }
     }
 }
