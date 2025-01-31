@@ -63,6 +63,11 @@ namespace Tetris
             player.Y = 1;
             AssertFalse(title, gameBoard.PlayerCanMoveRight());
 
+            title = "GameBoard.PlacePiece(x, y) places pieces at correct location.";
+            gameBoard.PlacePiece(5, 7);
+            AssertEquals(title, 1, gameBoard.ValueAt(5, 7));
+
+            // title "Game is lost if pieces is at starting location";
 
         }
         private static void PrintSuccess(string testTitle)

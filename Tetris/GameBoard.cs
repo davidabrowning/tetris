@@ -39,6 +39,10 @@ namespace Tetris
         {
             boardStatus[location] = 1;
         }
+        internal void PlacePiece(int x, int y)
+        {
+            PlacePiece(x + numCols * y);
+        }
 
         // ============================== METHOD ==============================
         // PlayerIsAtRest. Returns a bool true if Player is at rest and piece
