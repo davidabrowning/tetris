@@ -4,6 +4,7 @@ using System.Linq;
 using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace Tetris
 {
@@ -20,13 +21,15 @@ namespace Tetris
         public int YMax { get { return numRows - 1; } }
         public int StartingX { get { return numCols / 2; } }
         public int StartingY { get { return numRows - 1;  } }
+        public bool HasCompletedRow { get { return LowestCompletedRow != -1;  } }
+        public int LowestCompletedRow {  get { return GetLowestCompletedRow(); } }
         public bool IsGameOver {  get { return ValueAt(StartingX, StartingY) == 1; } }
 
         // =========================== CONSTRUCTORS ===========================
         internal GameBoard(Player player)
         {
             numCols = 10;
-            numRows = 5;
+            numRows = 20;
             boardStatus = new int[numCols * numRows];
             Player = player;
         }
@@ -103,6 +106,27 @@ namespace Tetris
         {
             Player.X = StartingX;
             Player.Y = StartingY;
+        }
+
+        private int GetLowestCompletedRow()
+        {
+            for (int y = 0; y <= YMax; y++)
+            {
+                bool completedRow = true;
+                for (int x = 0; x <= XMax; x++)
+                {
+                    if(ValueAt(x, y) == 0)
+                    {
+                        completedRow = false;
+                        break;
+                    }
+                }
+                if (completedRow)
+                {
+                    return y;
+                }
+            }
+            return -1;
         }
 
         // ============================== METHOD ==============================

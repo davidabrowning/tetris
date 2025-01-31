@@ -63,7 +63,7 @@ namespace Tetris
             player.Y = 1;
             AssertFalse(title, gameBoard.PlayerCanMoveRight());
 
-            title = "GameBoard.PlacePiece(x, y) places pieces at correct location.";
+            title = "GameBoard.PlacePiece(x, y) places pieces at correct location";
             gameBoard.PlacePiece(5, 7);
             AssertEquals(title, 1, gameBoard.ValueAt(5, 7));
 
@@ -74,6 +74,20 @@ namespace Tetris
             title = "Game is lost if piece is at starting location";
             gameBoard.PlacePiece(gameBoard.StartingX, gameBoard.StartingY);
             AssertTrue(title, gameBoard.IsGameOver);
+
+            title = "GameBoard.HasCompletedRow returns true if there is a  completed row";
+            for(int col = 0; col <= gameBoard.XMax; col++)
+            {
+                gameBoard.PlacePiece(col, 3);
+            }
+            AssertTrue(title, gameBoard.HasCompletedRow);
+
+            title = "GameBoard.LowestCompletedRow returns correct value";
+            for (int col = 0; col <= gameBoard.XMax; col++)
+            {
+                gameBoard.PlacePiece(col, 3);
+            }
+            AssertEquals(title, 3, gameBoard.LowestCompletedRow);
         }
         private static void PrintSuccess(string testTitle)
         {
