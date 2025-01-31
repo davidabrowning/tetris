@@ -14,24 +14,12 @@ namespace Tetris
         private int y;
 
         // ============================ PROPERTIES ============================
-        public int X { get; set; }
-        public int Y { get; set; }
-        
-        // =========================== CONSTRUCTORS ===========================
-        internal Player()
-        {
-            X = 4;
-            Y = 19;
-        }
+        internal int X { get; set; }
+        internal int Y { get; set; }
 
         internal void Descend()
         {
             Y = Math.Max(0, Y - 1);
-        }
-        internal void ResetPosition()
-        {
-            X = 4;
-            Y = 19;
         }
     }
 }

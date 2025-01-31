@@ -5,8 +5,8 @@
         static void Main(string[] args)
         {
             // Choose to run tests or launch game by commenting one out:
-            // RunTests();
-            LaunchGame();
+            RunTests();
+            //LaunchGame();
         }
         private static void RunTests()
         {
