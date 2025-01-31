@@ -25,41 +25,57 @@ namespace Tetris
         {
             while (millisecondsElapsed < 300 && !playerWantsToQuit)
             {
-                Console.Clear();
-                Console.WriteLine(gameBoard);
-                if (Console.KeyAvailable)
+                DrawScene();
+                AdvanceTime();
+                CheckForKeyPress();
+                AdvancePositionData();
+            }
+        }
+        private void DrawScene()
+        {
+            Console.Clear();
+            Console.WriteLine(gameBoard);
+        }
+        private void AdvanceTime()
+        {
+            millisecondsElapsed++;
+            Thread.Sleep(5);
+        }
+        private void CheckForKeyPress()
+        {
+            if (Console.KeyAvailable)
+            {
+                switch (Console.ReadKey().Key.ToString().ToUpper())
                 {
-                    switch (Console.ReadKey().Key.ToString().ToUpper())
-                    {
-                        case "LEFTARROW":
-                            player.X = Math.Max(0, player.X - 1);
-                            break;
-                        case "RIGHTARROW":
-                            player.X = Math.Min(9, player.X + 1);
-                            break;
-                        case "P":
-                            Console.Clear();
-                            Console.WriteLine("Paused. Press any key to continue.");
-                            Console.ReadKey();
-                            break;
-                        case "Q":
-                            playerWantsToQuit = true;
-                            break;
-                        default:
-                            break;
-                    }
+                    case "LEFTARROW":
+                        player.X = Math.Max(0, player.X - 1);
+                        break;
+                    case "RIGHTARROW":
+                        player.X = Math.Min(9, player.X + 1);
+                        break;
+                    case "P":
+                        Console.Clear();
+                        Console.WriteLine("Paused. Press any key to continue.");
+                        Console.ReadKey();
+                        break;
+                    case "Q":
+                        playerWantsToQuit = true;
+                        break;
+                    default:
+                        break;
                 }
-                millisecondsElapsed++;
-                if (millisecondsElapsed % 10 == 0)
-                {
-                    player.Descend();
-                }
-                if (player.Y == 0)
-                {
-                    gameBoard.PlacePiece(player.X + player.Y * 10);
-                    player.ResetPosition();
-                }
-                Thread.Sleep(5);
+            }
+        }
+        private void AdvancePositionData()
+        {
+            if (millisecondsElapsed % 10 == 0)
+            {
+                player.Descend();
+            }
+            if (player.Y == 0)
+            {
+                gameBoard.PlacePiece(player.X + player.Y * 10);
+                player.ResetPosition();
             }
         }
     }
