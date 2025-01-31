@@ -40,6 +40,16 @@ namespace Tetris
             player.X = 0;
             player.Y = 1;
             AssertTrue(title, gameBoard.PlayerIsAtRest());
+
+            title = "Player in leftmost column cannot move left";
+            player.X = 0;
+            player.Y = 5;
+            AssertFalse(title, gameBoard.PlayerCanMoveLeft());
+
+            title = "Player in rightmost column cannot move right";
+            player.X = gameBoard.XMax;
+            player.Y = 8;
+            AssertFalse(title, gameBoard.PlayerCanMoveRight());
         }
         private static void PrintSuccess(string testTitle)
         {
