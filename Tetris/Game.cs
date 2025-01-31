@@ -9,7 +9,7 @@ namespace Tetris
     internal class Game
     {
         // Constants
-        private static readonly int MillisecondsLimit = 300;
+        private static readonly int MillisecondsLimit = 1000;
 
         // Variables
         private GameBoard gameBoard;
@@ -77,7 +77,7 @@ namespace Tetris
             {
                 player.Descend();
             }
-            if (player.Y == 0)
+            if (gameBoard.PlayerIsAtRest())
             {
                 gameBoard.PlacePiece(player.X + player.Y * 10);
                 player.ResetPosition();
